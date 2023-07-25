@@ -4,8 +4,11 @@ const readlineSync = require('readline-sync');
 // faz uma pergunta e guarda o resultado
 var idade = readlineSync.question('Qual idade do usuario? ');
 
+//primeiro realizar a escolha dos arquivos a serem atualizados
+git add nomeDosArquivos // para todos os arquivos = git add .
+
 //realizar commit pelo console
-git commit -m "MESSAGE"
+git commit -m "message"
 */
 const leitor = require('readline-sync');
  
