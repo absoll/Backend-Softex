@@ -3,6 +3,12 @@ const leitor = require("readline-sync")
 
 
 let jogando = true
+const DIFICULDADE = {
+    'FACIL': 75,
+    'MEDIO': 50,
+    'DIFICIL': 25
+}
+
 
 function menu(){
     console.log("----- Blackjack -----")
@@ -33,7 +39,9 @@ function verificarEstourou(valor){
 }
 
 function puxarCarta(vetor){
-    vetor.push(random(1,13))
+    let cartaPuxada = random(1,13)
+    vetor.push(cartaPuxada)
+    return cartaPuxada
 }
 
 
@@ -43,23 +51,27 @@ function jogar(){
 
     console.log("Bem-vindo ao jogo, ", nomeJogador);
 
+    //gerando cartas randomicas para o jogador entre 1(A) e 13(K)
     console.log("Distribuindo 2 cartas para ",nomeJogador,"...");
     let cartasJogador = [random(1,13), random(1,13)]
 
     console.log("Distribuindo 2 cartas para o computador...");
     let cartasBanco = [random(1,13), random(1,13)]
 
+    //realizando o somatorio de todas as cartas puxadas pelo banco e pelo jogador
     let somatorioCartasJogador = somatorioVetor(cartasJogador)
     let somatorioCartasBanco = somatorioVetor(cartasBanco)
 
-    while(!verificarEstourou(somatorioCartasJogador) || !verificarEstourou(somatorioCartasJogador)){
+    //Caso o jogador nao tenha estourado, possibilita ele puxar mais uma carta
+    while(!verificarEstourou(somatorioCartasJogador)){
         console.log("Total de pontos do jogador: ",somatorioCartasJogador)
         opt = leitor.questionInt("Deseja puxar mais uma carta? 1 = SIM, 2 = NAO")
 
+        //caso ele aceite puxar mais uma carta, a carta é puxada e motrada seu valor, caso nao, encerra a opcao do jogador puxar uma carta
         if (opt === 1){
-            puxarCarta(cartasJogador);
+            let cartaPuxada = puxarCarta(cartasJogador);
             somatorioCartasJogador = somatorioVetor(cartasJogador)
-            console.log("A carta pouxada foi: ", cartasJogador[-1])
+            console.log("A carta puxada foi: ", cartaPuxada)
         }
         else
             break;
@@ -67,17 +79,16 @@ function jogar(){
     }
     
 
-    if (somatorioCartasJogador === somatorioCartasBanco)
+    //mostra o resultado final... Caso o jogador e banco tenha o mesmo, da empate para ambos
+    //Caso o jogador tenha estourado ou tenha menos pontos que o banco, o banco vence
+    //caso nao ocorra ennum desses, o jogador vence 
+    if (somatorioCartasJogador === somatorioCartasBanco )
         console.log("EMPATE!!! Tanto o jogador quanto o banco possuem ",somatorioVetor(cartasJogador),"pontos")
-    else if(somatorioCartasJogador > somatorioCartasBanco)
+    else if(somatorioCartasJogador < somatorioCartasBanco || somatorioCartasJogador > 21)
         console.log("O BANCO ganhou!!! O banco possui ",somatorioCartasBanco," pontos e o jogador ",nomeJogador," possui ",somatorioCartasJogador," pontos.")
     else
         console.log(nomeJogador," ganhou!!! O banco possui ",somatorioCartasBanco," pontos e o jogador ",nomeJogador," possui ",somatorioCartasJogador," pontos.")
-    
-
-
 }
-
 
 
 while(jogando){
