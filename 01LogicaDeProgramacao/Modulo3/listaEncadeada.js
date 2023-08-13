@@ -39,6 +39,7 @@ p3 = criarNovaInstancia(pessoa)
 p3['nome'] = "nome3"
 p3['idade'] = 35
 
+
 // função para determinar quem vai ser a "cabeca" da lista
 function determinarCabeca(pessoa){
     cabeca = pessoa
