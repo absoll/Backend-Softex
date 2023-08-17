@@ -1,3 +1,4 @@
+/*
 function fat(n){
     if (n === 1 || n === 0)
         return 1
@@ -31,3 +32,4 @@ function fibonnaci(n){
 
 const fibo = 7
 console.log(`O elemento ${fibo} da sequencia de fibonaci é ${fibonnaci(fibo)}`)
+*/
