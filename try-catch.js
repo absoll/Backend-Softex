@@ -68,9 +68,8 @@ function dividir(){
 
         console.log("Error: "+ error) // nao funciona, aparece "[object Object]", pois com o "+" o JS tenta transformar o objeto em string e esse é a saida padrao quando um objeto é transformado em string -> [object Object]
         console.log("Error com ,: ", error) // 'funciona'. O jeito correto de mostrar uma classe é através do "console.log()" é utilizando uma ","(virgula). Nao funciona pois o construtor da classe adiciona o dado dentro de "message", como foi passado um dicionario para essa variavel, deu erro
-        console.log("Error.message: :", error['mensagem'])
-        console.log(`Error: ${JSON.stringify(error.mensagem)}`)
-        console.log(`Error: ${JSON.stringify(JSON.stringify(error.message))}`)
+        console.log("Error.message: :", error.message) // nao funciona
+        console.log(`Error stringify: ${JSON.stringify(error.mensagem)}`) // nao funciona
 
 
         //console.log("Error: " + error) // nao funciona
