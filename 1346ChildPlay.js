@@ -38,6 +38,29 @@ Output
 For each test case your program must produce one line describing the result. If it is not possible to find an arrangement, print 
 the word 'impossible'. If it is possible to find an arrangement, print its sum and the description of the discarded slab (if any). If you had do discard a slab, describe it in the form 'discard X Y', where X ≤ Y; otherwise print 'discard none'.
 
+
+Exemplo real com Input e output
+Input:
+4
+1 4
+2 9
+2 1
+0 4
+2
+8 1
+9 4
+3
+6 3
+1 2
+3 1
+0
+
+Output:
+10 discard 1 2
+impossible
+8 discard none
+
+
 */
 
 const leitor = require('readline-sync');
@@ -58,3 +81,32 @@ do{
 
 
 console.log(vetorEntradaDados)
+console.log(vetorEntradaDados.length)
+console.log(vetorEntradaDados[0].length == undefined) // true, quando tiver apenas 1 numero
+console.log(vetorEntradaDados[1].length == undefined)
+
+let tamanhoVetor = 0
+let vetorTemporario = []
+for(let i = 0;i < vetorEntradaDados.length;i++){
+    //verifica se a linha so tem 1 numero, caso tenha, diz o tamanho do vetor q deve guardar, zera o vetor antigo armazenado e pula pro proximo numero
+    if (vetorEntradaDados[i].length === undefined){
+        tamanhoVetor = vetorEntradaDados[i]
+        vetorTemporario = []
+        continue
+    }
+
+    vetorTemporario.push(vetorEntradaDados[i])
+
+    //necessario para saber quando o vetor chegar em 0, isso significa q as 'peças' chegaram no limite e deve dar o resultado delas
+    tamanhoVetor--
+    if(tamanhoVetor === 0){
+        //vetor completo aqui
+    }
+}
+
+
+function verificarPecas(vetor){
+
+}
+
+
