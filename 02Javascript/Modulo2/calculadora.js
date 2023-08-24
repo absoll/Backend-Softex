@@ -14,6 +14,7 @@ let n2 = leitor.questionFloat("Digite o segundo valor")
 
 let opt = leitor.question("Digite a operação. + = soma, - = subtração, * = multiplicação, / = divisão ")
 
+
 switch(opt) {
     case '+':
         console.log(`O resultado de ${n1} + ${n2} = ${n1+n2}`)
@@ -27,10 +28,31 @@ switch(opt) {
     case '/':
         console.log(`O resultado de ${n1} / ${n2} = ${(n1/n2).toFixed(2)}. Possuindo ${n1%n2} de resto`)
         break;
+    default:
+        console.log("Operação invalida. Finalizando calculadora")
+        break;
+}
+
+
+/*
+//modo 2 de fazer usando "eval()"
+switch(opt) {
+    case '+':
+    case '-':
+    case '*':
+        console.log(`O resultado de ${n1} ${opt} ${n2} = ${eval(n1+opt+n2)}`) //eval() -> transforma a string em expressao matematica e a calcula
+        break;
+    case '/':
+        console.log(`O resultado de ${n1} ${opt} ${n2} = ${eval(n1+opt+n2).toFixed(2)}. Possuindo ${n1%n2} de resto`)
         break;
     default:
         console.log("Operação invalida. Finalizando calculadora")
         break;
-
+        
 }
+*/
 
+
+//exemplo
+//let teste = '7+2'
+//console.log(eval(teste)) -> 9

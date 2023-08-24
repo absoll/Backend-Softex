@@ -100,13 +100,26 @@ for(let i = 0;i < vetorEntradaDados.length;i++){
     //necessario para saber quando o vetor chegar em 0, isso significa q as 'peças' chegaram no limite e deve dar o resultado delas
     tamanhoVetor--
     if(tamanhoVetor === 0){
-        //vetor completo aqui
+        verificarPecas(vetorTemporario)
     }
 }
 
 
 function verificarPecas(vetor){
+    let tamVetor = vetor.length
+    let somaEsquerda = 0
+    let somaDireita = 0
 
+    for(let i = 0; i < tamVetor; i++){
+        somaDireita += vetor[i][1]
+        somaEsquerda += vetor[i][0]
+    }
+    let diferencaEsquerdaDireita = Math.abs(somaEsquerda - somaDireita)
+
+    while(diferencaEsquerdaDireitation !== 0){
+        
+        
+    }
 }
 
 
