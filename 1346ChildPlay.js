@@ -59,8 +59,6 @@ Output:
 10 discard 1 2
 impossible
 8 discard none
-
-
 */
 
 const leitor = require('readline-sync');
@@ -87,6 +85,7 @@ console.log(vetorEntradaDados[1].length == undefined)
 
 let tamanhoVetor = 0
 let vetorTemporario = []
+var resultado = []
 for(let i = 0;i < vetorEntradaDados.length;i++){
     //verifica se a linha so tem 1 numero, caso tenha, diz o tamanho do vetor q deve guardar, zera o vetor antigo armazenado e pula pro proximo numero
     if (vetorEntradaDados[i].length === undefined){
@@ -105,21 +104,37 @@ for(let i = 0;i < vetorEntradaDados.length;i++){
 }
 
 
+//Função responsavel por fazer a soma dos lados no modo arvore. Adiciona o valor final em um vetor
+//exemplo de resultado ->[[x1,y1], [x2,y2], [x3,y3]] => [x1, x2, x3, y3, y2, y1]
+function compararSomatorioLados(vetor, somatorio, pecas){
+    console.log("entrou")
+
+    console.log(`tamanho = ${vetor.length}, valor = ${vetor}, pecas = ${pecas} e somatorio = ${somatorio}`)
+    if(vetor[1] == undefined){ //se chegou no ultimo nó da arvore
+        pecas.push(vetor[0][0])
+        resultado.push([pecas, somatorio + vetor[0][0]])
+        pecas[pecas.length-1] = vetor[0][1]
+        resultado.push([pecas, somatorio + vetor[0][1]])
+    }
+    else{
+        pecas.push(vetor[0][0])
+        compararSomatorioLados(vetor.slice(1, vetor.length), (vetor[0][0] + somatorio), pecas)
+        pecas[pecas.length-1] = vetor[0][1]
+        compararSomatorioLados(vetor.slice(1, vetor.length), (vetor[0][1] + somatorio), pecas)
+    }
+}
+
+
 function verificarPecas(vetor){
-    let tamVetor = vetor.length
-    let somaEsquerda = 0
-    let somaDireita = 0
+    //fazendo o caso 1, se ambos os lados tem o mesmo somatorio e NAO precisa remover nenhuma peça
+    compararSomatorioLados(vetor, 0, [])
+   // console.log(resultado)
+    resultado.forEach((valor) => {console.log(valor[1])})
 
-    for(let i = 0; i < tamVetor; i++){
-        somaDireita += vetor[i][1]
-        somaEsquerda += vetor[i][0]
+    for(let i = 0; i < (resultado.length/2); i++){
+        console.log(`vetores = ${resultado[i][0]}/${resultado[resultado.length-(i+1)][0]} e resultado soma = ${resultado[i][1]}`)
     }
-    let diferencaEsquerdaDireita = Math.abs(somaEsquerda - somaDireita)
 
-    while(diferencaEsquerdaDireitation !== 0){
-        
-        
-    }
 }
 
 
