@@ -32,5 +32,5 @@ router.get('/', (request, response) => {
 })
 
 
-
+//obrigatorio exportar o modulo para que no arquivo destino ela possa ser lido
 module.exports = router;
