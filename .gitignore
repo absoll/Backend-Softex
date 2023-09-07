@@ -1,0 +1,2 @@
+# ignorar todos os modulos instalados no projeto, fazendo upload apenas dos arquivos do projeto
+node_modules/*
